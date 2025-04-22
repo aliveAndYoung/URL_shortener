@@ -4,9 +4,10 @@ const port = 3000;
 
 const morgan = require("morgan");
 app.use(morgan("dev"));
+const cors = require("cors");
+app.use(cors());
 
 app.use(express.json());
-
 
 const myAppRoute = require("./routes/myRoute");
 app.use(myAppRoute);

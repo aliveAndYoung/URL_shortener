@@ -5,7 +5,7 @@ const isNotShortenedUrl = (url) => {
         const isShortened =
             urlObj.hostname === "localhost" &&
             urlObj.port === "3000" &&
-            urlObj.pathname === "/myapp/" &&
+            urlObj.pathname === "/myapp/api" &&
             urlObj.searchParams;
 
         return !isShortened;

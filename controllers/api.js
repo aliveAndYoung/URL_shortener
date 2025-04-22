@@ -14,7 +14,7 @@ const add_url = async (req, res) => {
     const isNotShortened = isNotShortenedUrl(url);
     const isNotDuplicate = await checkUrlExists(url);
 
-console.log(isNotDuplicate)
+    console.log(isNotDuplicate);
 
     if (isNotShortened && !isNotDuplicate.exists) {
         const shortCode = await generateUniqueShortCode(url);
@@ -48,4 +48,14 @@ const redirect = async (req, res) => {
     }
 };
 
-module.exports = { add_url, redirect };
+const getAll_urls = async (req, res) => {
+    try {
+        const items = await DB.getAllItems();
+        res.json(items);
+    } catch (error) {
+        console.error("Error finding item:", error);
+        res.status(500).json({ error: "Error finding item" });
+    }
+};
+
+module.exports = { add_url, redirect, getAll_urls };
