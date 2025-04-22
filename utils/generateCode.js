@@ -1,7 +1,6 @@
-const { findItemById } = require("../DB/nedb");
+const { findItemByShortCode } = require("../DB/nedb");
 async function generateUniqueShortCode(url) {
-    const {nanoid} = await import("nanoid");
-    console.log(nanoid)
+    const { nanoid } = await import("nanoid");
     let shortCode;
     let attempts = 0;
     const maxAttempts = 5;
@@ -11,7 +10,7 @@ async function generateUniqueShortCode(url) {
         shortCode = nanoid(6);
 
         // Check if it exists in database
-        const exists = await findItemById(shortCode);
+        const exists = await findItemByShortCode(shortCode);
         attempts++;
 
         if (!exists) {

@@ -1,10 +1,10 @@
 @url = http://localhost:3000
 
-### Get request 
-GET {{url}}/myApp
-###
+### Get request for redirection
+GET {{url}}/myApp/api/S7yfHc
 
-POST {{url}}/myApp
+### Post request to generate a new shortCode
+POST {{url}}/myApp/api
 Content-Type: application/json
 
 {

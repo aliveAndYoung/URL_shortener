@@ -28,9 +28,9 @@ const getAllItems = async () => {
 };
 
 // Check if an item exists by ID
-const findItemById = async (id) => {
+const findItemByShortCode = async (short_code) => {
     return new Promise((resolve, reject) => {
-        db.findOne({ id }, (err, doc) => {
+        db.findOne({ short_code }, (err, doc) => {
             if (err) reject(err);
             else resolve(doc); // Returns null if not found
         });
@@ -40,5 +40,5 @@ const findItemById = async (id) => {
 module.exports = {
     addItem,
     getAllItems,
-    findItemById,
+    findItemByShortCode,
 };
