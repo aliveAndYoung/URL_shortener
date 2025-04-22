@@ -1,4 +1,12 @@
 @url = http://localhost:3000
 
-### Get request
+### Get request 
 GET {{url}}/myApp
+###
+
+POST {{url}}/myApp
+Content-Type: application/json
+
+{
+    "url": "https://example.com"
+}

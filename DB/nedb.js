@@ -1,44 +1,44 @@
-const Datastore = require('nedb');
-const path = require('path');
+const Datastore = require("nedb");
+const path = require("path");
 
 // initialize NeDB
 const db = new Datastore({
-  filename: path.join(__dirname, './data.db'),
-  autoload: true,
+    filename: path.join(__dirname, "./data.db"),
+    autoload: true,
 });
 
-// Add a new item (original_url, id, short_code)
-const addItem = (item) => {
-  return new Promise((resolve, reject) => {
-    db.insert(item, (err, newDoc) => {
-      if (err) reject(err);
-      else resolve(newDoc);
+// Add a new item (original_url,  short_code)
+const addItem = async (item) => {
+    return new Promise((resolve, reject) => {
+        db.insert(item, (err, newDoc) => {
+            if (err) reject(err);
+            else resolve(newDoc);
+        });
     });
-  });
 };
 
 // Get all items
-const getAllItems = () => {
-  return new Promise((resolve, reject) => {
-    db.find({}, (err, docs) => {
-      if (err) reject(err);
-      else resolve(docs);
+const getAllItems = async () => {
+    return new Promise((resolve, reject) => {
+        db.find({}, (err, docs) => {
+            if (err) reject(err);
+            else resolve(docs);
+        });
     });
-  });
 };
 
 // Check if an item exists by ID
-const findItemById = (id) => {
-  return new Promise((resolve, reject) => {
-    db.findOne({ id }, (err, doc) => {
-      if (err) reject(err);
-      else resolve(doc); // Returns null if not found
+const findItemById = async (id) => {
+    return new Promise((resolve, reject) => {
+        db.findOne({ id }, (err, doc) => {
+            if (err) reject(err);
+            else resolve(doc); // Returns null if not found
+        });
     });
-  });
 };
 
 module.exports = {
-  addItem,
-  getAllItems,
-  findItemById,
+    addItem,
+    getAllItems,
+    findItemById,
 };
